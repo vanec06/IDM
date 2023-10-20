@@ -16,7 +16,7 @@ export const registrarAmbiente = async (req, res) => {
         if (result.affectedRows > 0) {
             return res.status(200).json({
                 status: "200 OK",
-                message: 'Ambiente registrado con éxito',
+                message: 'Ambiente registrado con éxito...',
             });
         } else {
             return res.status(400).json({
