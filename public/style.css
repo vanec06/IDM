@@ -1,0 +1,47 @@
+h1,h2{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.table-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 34px;
+}
+.table-styles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+th,td {
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+.dere{
+    border: 1px solid black;
+    text-align: left;
+}
+table {
+    border-collapse: collapse;
+}
+h1,p{color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+td {
+    background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.margen {
+    padding: 7px;
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+.izqui{
+    background-color: rgb(219, 219, 219);
+}
+.img{
+    width: 200px;
+}
+
