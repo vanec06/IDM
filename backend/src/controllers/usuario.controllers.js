@@ -44,7 +44,7 @@ export const buscarusuarios = async (req, res) => {
 
     } catch (err) {
         res.status(500).json({
-            massage: 'Error en el controlador usuariocontroller.js:' + err
+            massage: 'Error en el servidor' + err
         });
     }
 };
@@ -54,7 +54,7 @@ export const listarusuarios = async (req, res) => {
         const [result] = await pool.query('SELECT * FROM usuario');
         res.status(200).json(result);
     } catch(e) {
-        res.status(500).json({ massage: 'Error en en controlador usuarios:' + e });
+        res.status(500).json({ massage: 'Error en el servidor' + e });
     }
 };
 
@@ -113,7 +113,7 @@ export const eliminarUsuario =  async (req,res) =>{
     }
 };
 
-export const cambiarEstadoCliente = async (req, res) => {
+export const cambiarEstadoUsuario = async (req, res) => {
     try {
         let { identificacion, estado } = req.body;
 
@@ -124,12 +124,12 @@ export const cambiarEstadoCliente = async (req, res) => {
         if (rows.affectedRows > 0) {
             return res.status(200).json({ 
                 'status':"200 OK",
-                'message':'Se actualizó con éxito el estado del cliente'
+                'message':'Se actualizó con éxito el estado del usuario'
             });
         } else {
             return res.status(404).json({ 
                 'status':"404 Not Found",
-                'message':'No se encontró el cliente con la identificación proporcionada' 
+                'message':'No se encontró el usuario con la identificación proporcionada' 
             });
         }
     } catch (err) {

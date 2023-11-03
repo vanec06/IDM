@@ -16,7 +16,7 @@ export const registrarAmbiente = async (req, res) => {
         if (result.affectedRows > 0) {
             return res.status(200).json({
                 status: "200 OK",
-                message: 'Ambiente registrado con éxito...',
+                message: 'Ambiente registrado con éxito',
             });
         } else {
             return res.status(400).json({
@@ -70,6 +70,33 @@ export const listarAmbientes = async (req, res) => {
         res.status(500).json({
             status: "500 Internal Server Error",
             message: 'Error en el servidor',
+        });
+    }
+};
+export const actualizarAmbiente = async (req, res) => {
+    try{ 
+        let id = req.params.id;
+        let{nombre} =req.body;
+
+        let sql = `UPDATE ambiente SET nombre='${nombre}'
+        WHERE id_ambiente= ${id}`;
+
+        const [rows] = await pool.query(sql);
+        
+        if (rows.affectedRows > 0)
+            return res.status(200).json({ 
+                'status':"200 OK",
+                'message':'Se actualizo con exito el ambiente',
+            });
+        else
+            return res.status(401).json({ 
+                'status':"404 Not Found",
+                'message':'No se actualizo el ambiente' 
+            });
+    } catch (err) {
+        res.status(500).json({
+            'status':"500 Internal Server Error",
+            'message':'Error en el servidor' + err
         });
     }
 };

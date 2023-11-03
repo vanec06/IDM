@@ -73,3 +73,30 @@ export const listarArea = async (req, res) => {
         });
     }
 };
+export const actualizarArea = async (req, res) => {
+    try{ 
+        let id = req.params.id;
+        let{nombre} =req.body;
+
+        let sql = `UPDATE area SET nombre='${nombre}'
+        WHERE id_area= ${id}`;
+
+        const [rows] = await pool.query(sql);
+        
+        if (rows.affectedRows > 0)
+            return res.status(200).json({ 
+                'status':"200 OK",
+                'message':'Se actualizo con exito el area',
+            });
+        else
+            return res.status(401).json({ 
+                'status':"401 Not Found",
+                'message':'No se actualizo el area' 
+            });
+    } catch (err) {
+        res.status(500).json({
+            'status':"500 Internal Server Error",
+            'message':'Error en el servidor' + err
+        });
+    }
+};
